@@ -382,6 +382,19 @@ nav {
   text-align: left;
   color: #fff;
 }
+/*PONG */
+
+#pong-game {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #ffffff; 
+}
+
+#pongCanvas {
+  background-color: #970000;
+  display: block;
+  margin: 0 auto;
+}
 
 /* FOOTER */
 
