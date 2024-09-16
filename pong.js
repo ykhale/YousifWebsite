@@ -1,6 +1,9 @@
 const canvas = document.getElementById('pongCanvas');
 const ctx = canvas.getContext('2d');
 
+// Reset any transformations applied earlier to avoid unintended tilts
+ctx.setTransform(1, 0, 0, 1, 0, 0); 
+
 const ball = {
   x: canvas.width / 2,
   y: canvas.height / 2,
@@ -93,7 +96,8 @@ function update() {
   ball.x += ball.velocityX;
   ball.y += ball.velocityY;
 
-  com.y += ((ball.y - (com.y + com.height / 2))) * 0.1;
+  // Enhanced AI with easing
+  com.y += ((ball.y - (com.y + com.height / 2))) * 0.15;
 }
 
 function collision(b, p) {
@@ -111,11 +115,20 @@ function collision(b, p) {
 }
 
 function render() {
-  drawRect(0, 0, canvas.width, canvas.height, '#000');
+  // Apply a subtle 3D perspective effect
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+  ctx.save();
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.scale(1, 0.98); // Subtle squash for a 3D effect
+  ctx.translate(-canvas.width / 2, -canvas.height / 2);
+
+  drawRect(0, 0, canvas.width, canvas.height, '#000'); // Background color corrected to black
   drawRect(user.x, user.y, user.width, user.height, user.color);
   drawRect(com.x, com.y, com.width, com.height, com.color);
   drawArc(ball.x, ball.y, ball.radius, ball.color);
   drawScore();
+
+  ctx.restore();
 }
 
 function game() {
@@ -123,5 +136,6 @@ function game() {
   render();
 }
 
-let framePerSecond = 50;
+// Run the game at 60 FPS
+let framePerSecond = 60;
 setInterval(game, 1000 / framePerSecond);

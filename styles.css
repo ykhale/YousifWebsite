@@ -56,6 +56,7 @@ i:hover {
 .link__hover-effect--white:after {
   background-color: #fff;
 }
+
 .link__hover-effect--black:after {
   background-color: #000;
 }
@@ -97,9 +98,18 @@ section:nth-child(even) {
 
 .section__title {
   margin-bottom: 20px;
+  perspective: 1000px; /* Added for 3D effect */
 }
 
-/* NAVIGATION BAR */
+.section__title span {
+  display: inline-block;
+  transform: rotateY(0deg);
+  transition: transform 0.6s;
+}
+
+.section__title span:hover {
+  transform: rotateY(360deg);
+}
 
 nav {
   height: 100px;
@@ -110,6 +120,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
+  perspective: 1000px; /* Added for 3D effect */
 }
 
 .nav__link--list {
@@ -120,6 +131,13 @@ nav {
   margin: 0 12px;
   color: #242424;
   font-weight: 700;
+  transform: translateZ(0);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nav__link--anchor:hover {
+  transform: translateZ(20px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .nav__link--anchor-primary {
@@ -128,20 +146,27 @@ nav {
   border-radius: 50px;
   color: white;
   transition: all 300ms ease;
+  transform: translateZ(0);
 }
 
 .nav__link--anchor-primary:hover {
   background-color: #5d3eff;
+  transform: translateZ(10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .personal__logo {
   font-size: 24px;
   color: #3050b1;
   margin: 0 12px;
-  font-weight: bold
+  font-weight: bold;
+  transform: rotateY(0deg);
+  transition: transform 0.6s;
 }
 
-/* ABOUT ME */
+.personal__logo:hover {
+  transform: rotateY(360deg);
+}
 
 #about-me {
   min-height: 100vh;
@@ -171,6 +196,12 @@ nav {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
   margin-bottom: 28px;
   animation: animate-profile-picture 800ms 200ms backwards;
+  transform: rotateY(0deg);
+  transition: transform 0.6s;
+}
+
+.about-me__picture--mask:hover {
+  transform: rotateY(360deg);
 }
 
 @keyframes animate-profile-picture {
@@ -192,7 +223,14 @@ nav {
 .about-me__info--title {
   margin-bottom: 16px;
   animation: fade-up 650ms 400ms backwards;
+  transform: translateZ(0);
+  transition: transform 0.6s;
 }
+
+.about-me__info--title:hover {
+  transform: translateZ(20px);
+}
+
 .about-me__info--para {
   font-size: 20px;
   margin-bottom: 28px;
@@ -203,6 +241,12 @@ nav {
   font-size: 20px;
   color: #242424;
   padding: 0 16px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.about-me__link:hover {
+  transform: scale(1.2);
+  color: #3050b1;
 }
 
 .about-me__links {
@@ -228,6 +272,12 @@ nav {
 .about-me__img {
   width: 100%;
   animation: fade-in 1200ms 800ms backwards;
+  transform: rotateY(0deg);
+  transition: transform 0.6s;
+}
+
+.about-me__img:hover {
+  transform: rotateY(360deg);
 }
 
 @keyframes fade-in {
@@ -256,8 +306,6 @@ nav {
   }
 }
 
-/* TECH - STACK */
-
 .language__img {
   width: 100%;
   max-width: 100px;
@@ -274,7 +322,9 @@ nav {
   display: flex;
   justify-content: center;
   position: relative;
+  perspective: 500px; /* Added for 3D effect */
 }
+
 .language__img--wrapper {
   display: flex;
   justify-content: center;
@@ -302,8 +352,6 @@ nav {
   opacity: 1;
 }
 
-/* PROJECTS */
-
 .project {
   margin-bottom: 135px;
 }
@@ -315,6 +363,12 @@ nav {
 .project__img {
   width: 100%;
   transition: all 500ms ease;
+  transform: translateZ(0);
+  perspective: 1000px;
+}
+.project__img:hover {
+  transform: scale(1.07) translateZ(20px);
+  filter: blur(5px);
 }
 
 .project__wrapper {
@@ -323,6 +377,11 @@ nav {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+  transform: rotateY(0deg);
+  transition: transform 0.6s;
+}
+.project__wrapper:hover {
+  transform: rotateY(10deg);
 }
 .project__wrapper:before {
   content: "";
@@ -341,11 +400,6 @@ nav {
   transform: translateY(0);
   opacity: 0.7;
 }
-.project:hover .project__img {
-  transform: scale(1.07);
-  filter: blur(5px);
-}
-
 .project:hover .project__description {
   opacity: 1;
   transform: translateY(-50%);
@@ -386,19 +440,29 @@ nav {
   text-align: left;
   color: #fff;
 }
-/*PONG */
+
+/* PONG */
 
 #pong-game {
   padding: 20px 0;
   text-align: center;
   background-color: #ffffff;
+  perspective: 1000px; /* Added for 3D effect */
 }
 
 #pongCanvas {
-  background-color: #970000;
+  background-color: #000; /* Corrected to black */
   display: block;
   margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform: perspective(1000px) rotateX(5deg); /* Subtle 3D effect */
+  transition: all 0.3s;
 }
+
+#pongCanvas:hover {
+  transform: perspective(1000px) rotateX(0deg); /* Return to normal on hover */
+}
+
 
 /* FOOTER */
 
@@ -413,6 +477,7 @@ footer {
   justify-content: space-around;
   margin-bottom: 28px;
 }
+
 .footer__row {
   display: flex;
   flex-direction: column;
@@ -444,6 +509,12 @@ footer {
 .footer__anchor {
   margin-bottom: 20px;
   position: relative;
+  transform: translateZ(0);
+  transition: transform 0.3s;
+}
+
+.footer__anchor:hover {
+  transform: translateZ(20px);
 }
 
 .footer__anchor:hover .footer__logo--popper {
