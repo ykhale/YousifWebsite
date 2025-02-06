@@ -570,7 +570,7 @@ footer {
     display: none;
   }
 
-  .project__description--links {
+  .project__description--link {
     display: flex;
     justify-content: center;
   }
