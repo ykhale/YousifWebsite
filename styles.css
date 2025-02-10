@@ -463,7 +463,6 @@ nav {
   transform: perspective(1000px) rotateX(0deg); /* Return to normal on hover */
 }
 
-
 /* FOOTER */
 
 footer {
@@ -492,8 +491,8 @@ footer {
 }
 
 .footer__social--link,
-.footer__copyright,
-.footer__logo--popper {
+.footer__logo--popper,
+.footer__copyright {
   color: #fff;
 }
 
@@ -522,7 +521,9 @@ footer {
   opacity: 1;
 }
 
-/* Small phones, tablets, large smartphones */
+/* ------------ MEDIA QUERIES ------------ */
+
+/* Tablets & small laptops up to 768px */
 @media (max-width: 768px) {
   nav {
     height: 68px;
@@ -548,9 +549,15 @@ footer {
     left: 30px;
     padding-right: 30px;
   }
+
+  /* Force the Pong canvas to shrink and keep ratio */
+  #pongCanvas {
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
-/* SMALL PHONES */
+/* Small phones up to 480px */
 @media (max-width: 480px) {
   .nav__link:not(:last-child) {
     display: none;
