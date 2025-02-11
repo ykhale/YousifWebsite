@@ -16,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #242424;
+  color: #1f1f1f; /* Darker text color */
 }
 
 h1, h2, h3, h4, h5, h6, span {
@@ -25,12 +25,12 @@ h1, h2, h3, h4, h5, h6, span {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 40px; /* Slightly larger */
 }
 
 p {
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger */
 }
 
 a {
@@ -43,6 +43,7 @@ i:hover {
   opacity: 0.7;
 }
 
+/* Hover underline effect classes */
 .link__hover-effect:after {
   content: "";
   position: absolute;
@@ -81,6 +82,7 @@ li {
 .container {
   padding: 50px 0;
 }
+
 .row {
   width: 100%;
   max-width: 800px;
@@ -92,13 +94,15 @@ li {
   color: #3050b1;
 }
 
+/* Make even sections stand out with a light background */
 section:nth-child(even) {
   background-color: #f8f8f8;
 }
 
+/* Section titles */
 .section__title {
   margin-bottom: 20px;
-  perspective: 1000px; /* Added for 3D effect */
+  perspective: 1000px; /* 3D effect on hover */
 }
 
 .section__title span {
@@ -111,6 +115,7 @@ section:nth-child(even) {
   transform: rotateY(360deg);
 }
 
+/* NAV */
 nav {
   height: 100px;
   width: 100%;
@@ -120,7 +125,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
-  perspective: 1000px; /* Added for 3D effect */
+  perspective: 1000px;
 }
 
 .nav__link--list {
@@ -129,7 +134,7 @@ nav {
 
 .nav__link--anchor {
   margin: 0 12px;
-  color: #242424;
+  color: #1f1f1f;
   font-weight: 700;
   transform: translateZ(0);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -144,7 +149,7 @@ nav {
   background-color: #3050b1;
   padding: 8px 20px;
   border-radius: 50px;
-  color: white;
+  color: #fff;
   transition: all 300ms ease;
   transform: translateZ(0);
 }
@@ -168,6 +173,7 @@ nav {
   transform: rotateY(360deg);
 }
 
+/* ABOUT ME SECTION */
 #about-me {
   min-height: 100vh;
   display: flex;
@@ -220,8 +226,10 @@ nav {
   width: 100%;
 }
 
+/* Slightly larger subheading */
 .about-me__info--title {
   margin-bottom: 16px;
+  font-size: 40px; /* bigger H1 specifically here, if you want */
   animation: fade-up 650ms 400ms backwards;
   transform: translateZ(0);
   transition: transform 0.6s;
@@ -231,15 +239,16 @@ nav {
   transform: translateZ(20px);
 }
 
+/* Larger paragraph text for better readability */
 .about-me__info--para {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 28px;
   animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me__link {
   font-size: 20px;
-  color: #242424;
+  color: #1f1f1f;
   padding: 0 16px;
   transition: transform 0.3s, color 0.3s;
 }
@@ -269,6 +278,7 @@ nav {
   display: flex;
   align-items: center;
 }
+
 .about-me__img {
   width: 100%;
   animation: fade-in 1200ms 800ms backwards;
@@ -306,11 +316,13 @@ nav {
   }
 }
 
+/* LANGUAGES */
 .language__img {
   width: 100%;
   max-width: 100px;
   transition: all 300ms;
 }
+
 .language:hover .language__img {
   filter: brightness(80%);
   opacity: 0.86;
@@ -322,7 +334,7 @@ nav {
   display: flex;
   justify-content: center;
   position: relative;
-  perspective: 500px; /* Added for 3D effect */
+  perspective: 500px; /* 3D effect on hover */
 }
 
 .language__img--wrapper {
@@ -352,6 +364,7 @@ nav {
   opacity: 1;
 }
 
+/* PROJECTS */
 .project {
   margin-bottom: 135px;
 }
@@ -380,9 +393,11 @@ nav {
   transform: rotateY(0deg);
   transition: transform 0.6s;
 }
+
 .project__wrapper:hover {
   transform: rotateY(10deg);
 }
+
 .project__wrapper:before {
   content: "";
   position: absolute;
@@ -396,10 +411,12 @@ nav {
   z-index: 2;
   transform: translateY(100%);
 }
+
 .project:hover .project__wrapper:before {
   transform: translateY(0);
   opacity: 0.7;
 }
+
 .project:hover .project__description {
   opacity: 1;
   transform: translateY(-50%);
@@ -420,21 +437,32 @@ nav {
   transition: transform 450ms, opacity 300ms;
 }
 
+/* Larger project title */
 .project__description--title {
-  font-size: 40px;
+  font-size: 44px;
 }
 
 .project__description--para {
   margin: 16px 0;
+  font-size: 18px; /* Increase paragraph size */
 }
 
+/* Make links bold/stand out more */
 .project__description--link {
   font-size: 20px;
+  font-weight: 700;
+  text-decoration: underline;
   margin-right: 16px;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
-.project__description--title,
+.project__description--link:hover {
+  color: #a5a5a5;
+  text-decoration: none;
+}
+
 .project__description--sub-title,
+.project__description--title,
 .project__description--para,
 .project__description--link {
   text-align: left;
@@ -442,29 +470,27 @@ nav {
 }
 
 /* PONG */
-
 #pong-game {
   padding: 20px 0;
   text-align: center;
   background-color: #ffffff;
-  perspective: 1000px; /* Added for 3D effect */
+  perspective: 1000px;
 }
 
 #pongCanvas {
-  background-color: #000; /* Corrected to black */
+  background-color: #000;
   display: block;
   margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  transform: perspective(1000px) rotateX(5deg); /* Subtle 3D effect */
+  transform: perspective(1000px) rotateX(5deg);
   transition: all 0.3s;
 }
 
 #pongCanvas:hover {
-  transform: perspective(1000px) rotateX(0deg); /* Return to normal on hover */
+  transform: perspective(1000px) rotateX(0deg);
 }
 
 /* FOOTER */
-
 footer {
   background-color: #242424;
 }
@@ -521,7 +547,7 @@ footer {
   opacity: 1;
 }
 
-/* ------------ MEDIA QUERIES ------------ */
+/* MEDIA QUERIES */
 
 /* Tablets & small laptops up to 768px */
 @media (max-width: 768px) {
@@ -530,19 +556,27 @@ footer {
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 32px;
+  }
+
+  .about-me__info--title {
+    font-size: 36px;
   }
 
   .about-me__info--para {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .language {
     width: calc(100% / 3);
   }
 
+  .project__description--title {
+    font-size: 36px;
+  }
+
   .project__description--para {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .project__description {
@@ -550,7 +584,6 @@ footer {
     padding-right: 30px;
   }
 
-  /* Force the Pong canvas to shrink and keep ratio */
   #pongCanvas {
     width: 100% !important;
     height: auto !important;
@@ -583,7 +616,7 @@ footer {
   }
 
   .project__description--title {
-    font-size: 32px;
+    font-size: 30px;
     line-height: 1;
     text-align: center;
   }
