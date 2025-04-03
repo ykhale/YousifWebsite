@@ -475,6 +475,18 @@ nav {
   text-align: center;
   background-color: #f8f8f8;
   perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#flappy-game .container {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 #flappyCanvas {
@@ -485,6 +497,8 @@ nav {
   border-radius: 10px;
   transform: perspective(1000px) rotateX(5deg);
   transition: all 0.3s;
+  max-width: 100%;
+  height: auto;
 }
 
 #flappyCanvas:hover {

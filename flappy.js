@@ -1,12 +1,20 @@
 const canvas = document.getElementById('flappyCanvas');
 const ctx = canvas.getContext('2d');
 
-// Game constants - Made easier
-const GRAVITY = 0.3;
-const JUMP_FORCE = -8;
-const PIPE_SPEED = 1.5;
-const PIPE_SPAWN_RATE = 2000;
-const PIPE_GAP = 200;
+// Game constants - Made even easier
+const GRAVITY = 0.2; // Reduced from 0.3
+const JUMP_FORCE = -6; // Reduced from -8
+const PIPE_SPEED = 1.2; // Reduced from 1.5
+const PIPE_SPAWN_RATE = 2500; // Increased from 2000
+const PIPE_GAP = 250; // Increased from 200
+
+// Sound effects
+const jumpSound = new Audio();
+jumpSound.src = 'data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA==';
+const scoreSound = new Audio();
+scoreSound.src = 'data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA==';
+const gameOverSound = new Audio();
+gameOverSound.src = 'data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA==';
 
 // Game objects
 const bird = {
@@ -25,13 +33,14 @@ const pipes = [];
 let score = 0;
 let gameOver = false;
 let lastPipeSpawn = 0;
+let highScore = localStorage.getItem('flappyHighScore') || 0;
 
 // Event listeners
 canvas.addEventListener('click', () => {
     if (gameOver) {
         resetGame();
     } else {
-        bird.velocity = JUMP_FORCE;
+        jump();
     }
 });
 
@@ -41,13 +50,19 @@ document.addEventListener('keydown', (event) => {
         if (gameOver) {
             resetGame();
         } else {
-            bird.velocity = JUMP_FORCE;
+            jump();
         }
     }
 });
 
+function jump() {
+    bird.velocity = JUMP_FORCE;
+    jumpSound.currentTime = 0;
+    jumpSound.play().catch(e => console.log('Audio play failed:', e));
+}
+
 function createPipe() {
-    const gapPosition = Math.random() * (canvas.height - PIPE_GAP - 100) + 50;
+    const gapPosition = Math.random() * (canvas.height - PIPE_GAP - 200) + 100; // More centered gaps
     pipes.push({
         x: canvas.width,
         topHeight: gapPosition,
@@ -84,7 +99,7 @@ function update() {
 
     // Check for collisions with top and bottom
     if (bird.y <= 0 || bird.y + bird.height >= canvas.height) {
-        gameOver = true;
+        endGame();
     }
 
     // Update pipes
@@ -104,7 +119,7 @@ function update() {
             bird.x < pipe.x + pipe.width) {
             if (bird.y < pipe.topHeight || 
                 bird.y + bird.height > pipe.bottomY) {
-                gameOver = true;
+                endGame();
             }
         }
 
@@ -112,6 +127,12 @@ function update() {
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
             pipe.passed = true;
             score++;
+            scoreSound.currentTime = 0;
+            scoreSound.play().catch(e => console.log('Audio play failed:', e));
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('flappyHighScore', highScore);
+            }
         }
 
         // Remove pipes that are off screen
@@ -121,12 +142,18 @@ function update() {
     }
 }
 
+function endGame() {
+    gameOver = true;
+    gameOverSound.currentTime = 0;
+    gameOverSound.play().catch(e => console.log('Audio play failed:', e));
+}
+
 function draw() {
     // Clear canvas
     ctx.fillStyle = '#87CEEB'; // Sky blue background
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw clouds (optional decoration)
+    // Draw clouds
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     ctx.beginPath();
     ctx.arc(100, 50, 30, 0, Math.PI * 2);
@@ -153,6 +180,10 @@ function draw() {
     ctx.textAlign = 'center';
     ctx.fillText(score.toString(), canvas.width / 2, 50);
 
+    // Draw high score
+    ctx.font = 'bold 24px Arial';
+    ctx.fillText(`High Score: ${highScore}`, canvas.width / 2, 90);
+
     // Draw game over message
     if (gameOver) {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
@@ -163,7 +194,8 @@ function draw() {
         ctx.fillText('Game Over!', canvas.width / 2, canvas.height / 2);
         ctx.font = '24px Arial';
         ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 40);
-        ctx.fillText('Click or Press Space to Play Again', canvas.width / 2, canvas.height / 2 + 80);
+        ctx.fillText(`High Score: ${highScore}`, canvas.width / 2, canvas.height / 2 + 80);
+        ctx.fillText('Click or Press Space to Play Again', canvas.width / 2, canvas.height / 2 + 120);
     }
 }
 
