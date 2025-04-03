@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Pipes</title>
+</head>
+<body>
+    <canvas id="pipeTop" width="80" height="400"></canvas>
+    <canvas id="pipeBottom" width="80" height="400"></canvas>
+    <script>
+        // Create top pipe
+        const topCanvas = document.getElementById('pipeTop');
+        const topCtx = topCanvas.getContext('2d');
+        
+        // Draw pipe body
+        topCtx.fillStyle = '#2E8B57';
+        topCtx.fillRect(0, 0, 80, 400);
+        
+        // Draw pipe rim
+        topCtx.fillStyle = '#228B22';
+        topCtx.fillRect(0, 0, 80, 20);
+        
+        // Create bottom pipe
+        const bottomCanvas = document.getElementById('pipeBottom');
+        const bottomCtx = bottomCanvas.getContext('2d');
+        
+        // Draw pipe body
+        bottomCtx.fillStyle = '#2E8B57';
+        bottomCtx.fillRect(0, 0, 80, 400);
+        
+        // Draw pipe rim
+        bottomCtx.fillStyle = '#228B22';
+        bottomCtx.fillRect(0, 380, 80, 20);
+        
+        // Save images
+        const topPipe = topCanvas.toDataURL('image/png');
+        const bottomPipe = bottomCanvas.toDataURL('image/png');
+        
+        // Create download links
+        const topLink = document.createElement('a');
+        topLink.href = topPipe;
+        topLink.download = 'pipe_top.png';
+        topLink.textContent = 'Download Top Pipe';
+        
+        const bottomLink = document.createElement('a');
+        bottomLink.href = bottomPipe;
+        bottomLink.download = 'pipe_bottom.png';
+        bottomLink.textContent = 'Download Bottom Pipe';
+        
+        document.body.appendChild(document.createElement('br'));
+        document.body.appendChild(topLink);
+        document.body.appendChild(document.createElement('br'));
+        document.body.appendChild(bottomLink);
+    </script>
+</body>
+</html> 

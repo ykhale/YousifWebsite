@@ -469,25 +469,27 @@ nav {
   color: #fff;
 }
 
-/* PONG */
-#pong-game {
+/* FLAPPY BIRD */
+#flappy-game {
   padding: 20px 0;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #f8f8f8;
   perspective: 1000px;
 }
 
-#pongCanvas {
-  background-color: #000;
+#flappyCanvas {
+  background-color: #87CEEB;
   display: block;
   margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   transform: perspective(1000px) rotateX(5deg);
   transition: all 0.3s;
 }
 
-#pongCanvas:hover {
+#flappyCanvas:hover {
   transform: perspective(1000px) rotateX(0deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* FOOTER */
@@ -584,7 +586,7 @@ footer {
     padding-right: 30px;
   }
 
-  #pongCanvas {
+  #flappyCanvas {
     width: 100% !important;
     height: auto !important;
   }

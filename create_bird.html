@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Bird</title>
+</head>
+<body>
+    <canvas id="birdCanvas" width="200" height="200"></canvas>
+    <script>
+        const canvas = document.getElementById('birdCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Load the profile picture
+        const img = new Image();
+        img.src = './assets/me.jpeg';
+        
+        img.onload = function() {
+            // Create a circular mask
+            ctx.beginPath();
+            ctx.arc(100, 100, 100, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+            
+            // Draw the image
+            ctx.drawImage(img, 0, 0, 200, 200);
+            
+            // Add a beak
+            ctx.beginPath();
+            ctx.moveTo(150, 100);
+            ctx.lineTo(180, 90);
+            ctx.lineTo(180, 110);
+            ctx.closePath();
+            ctx.fillStyle = '#FFA500';
+            ctx.fill();
+            
+            // Add an eye
+            ctx.beginPath();
+            ctx.arc(130, 80, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#000';
+            ctx.fill();
+            
+            // Save the image
+            const birdImage = canvas.toDataURL('image/png');
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.href = birdImage;
+            link.download = 'bird_me.png';
+            link.textContent = 'Download Bird Image';
+            
+            document.body.appendChild(document.createElement('br'));
+            document.body.appendChild(link);
+        };
+    </script>
+</body>
+</html> 
