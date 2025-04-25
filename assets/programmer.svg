@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <link rel="stylesheet" href="https://cdn.statically.io/css/error.css">
+</head>
+<body>
+  <div class="error">
+    <h1>
+      <a href="https://statically.io">
+        <img class="logo" src="https://cdn.statically.io/img/statically.io/images/branding/statically-logo-dark.svg" alt="Statically logo">
+      </a>
+    </h1>
+
+    <h2>Not Found</h2>
+  
+    <p>Remote or internal content not found. Back to <a href="https://statically.io">homepage</a> or <a href="https://statically.discourse.group">Ask the Community</a>.</p>
+  </div>
+</body>
+</html>

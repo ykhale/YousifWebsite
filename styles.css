@@ -157,9 +157,12 @@ section:nth-child(even) {
   align-items: center;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background-color: var(--bg-color);
   transition: all var(--transition-speed);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav.scrolled {
@@ -174,6 +177,7 @@ section:nth-child(even) {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .personal__logo {
@@ -262,34 +266,38 @@ section:nth-child(even) {
 /* ABOUT ME */
 #about-me {
   min-height: 100vh;
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
 }
 
 .about-me__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 0 24px;
 }
 
 .about-me__info--container {
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0 20px;
+  gap: 24px;
 }
 
 .about-me__picture--mask {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 24px;
-  box-shadow: 0 8px 30px var(--shadow-color);
   animation: float 6s ease-in-out infinite;
+  box-shadow: 0 5px 15px var(--shadow-color);
 }
 
 @keyframes float {
@@ -392,8 +400,10 @@ section:nth-child(even) {
 
 .about-me__img {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
+  object-fit: contain;
   animation: pulse 4s infinite;
+  border-radius: 8px;
 }
 
 @keyframes pulse {
@@ -880,32 +890,4 @@ footer {
   .theme-toggle {
     display: none;
   }
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
-  gap: 16px;
-}
-
-.social-icon {
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--primary-color);
-  background-color: var(--bg-color);
-  border-radius: 50%;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  transition: all var(--transition-speed);
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-  background-color: var(--primary-color);
-  color: white;
-  box-shadow: 0 6px 15px var(--shadow-color);
 }
