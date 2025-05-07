@@ -257,7 +257,7 @@
                   React, Three.js, React Three Fiber, Cannon.js, JavaScript
                 </h4>
                 <p class="project__description--para">
-                  A dynamic 3D racing game featuring realistic physics with suspension, acceleration, and drifting. Includes multiple camera views, an interactive race track with obstacles, and controls for performing stunts.
+                  A dynamic and interactive 3D car racing game built with React Three Fiber and Cannon.js physics. Experience realistic car physics including suspension, acceleration, braking, and drifting. Navigate around a custom-designed race track with various obstacles and ramps. The game features multiple camera views, responsive controls, and the ability to perform stunts and tricks.
                 </p>
                 <div class="project__description--links">
                   <a
@@ -266,7 +266,7 @@
                     class="project__description--link"
                     style="margin-right: 1rem;"
                   >
-                    <i class="fas fa-gamepad"></i> Play Game
+                    <i class="fas fa-link"></i> Play Game
                   </a>
                   <a
                     href="https://github.com/ykhale/Racing"
@@ -286,7 +286,8 @@
                 <h3 class="project__description--title">iRepair Scheduler</h3>
                 <h4 class="project__description--sub-title">Google Apps Script, Google Sheets, HTML, CSS</h4>
                 <p class="project__description--para">
-                  iRepair Scheduler is an innovative cloud-based appointment scheduling and inventory management system built for my personal cell phone repair business. Leveraging Google Apps Script and Google Sheets as a real-time backend.
+                  iRepair Scheduler is an innovative cloud-based appointment scheduling and inventory management system built for my personal cell phone repair business. Leveraging Google Apps Script and Google Sheets as a real-time backend, this solution enables customers to effortlessly book repair appointments only when the necessary repair parts are available. With a modern, responsive design and seamless email confirmations, the system streamlines the repair process—enhancing both the customer experience and the operational efficiency of my repair service.
+                </p>
                 <div class="project__description--links">
                   <a href="https://script.google.com/macros/s/AKfycbwwFeuAwRvsauAsG4A_i4Rha0eAd6d3_p8kWQDUn_5vPsSTe4Ub2u1nk8CGMgmGETJckw/exec" target="_blank" class="project__description--link">
                     <i class="fas fa-external-link-alt"></i> Live Booking
