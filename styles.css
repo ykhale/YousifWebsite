@@ -898,60 +898,67 @@ footer {
 }
 
 .experience__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .experience__item {
+  width: 280px;
   background-color: var(--bg-color);
   border-radius: 20px;
-  padding: 3rem 2rem 2rem;
+  padding: 70px 20px 30px; /* space for bubble on top */
   box-shadow: 0 8px 25px var(--shadow-color);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .experience__item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px var(--shadow-color);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px var(--shadow-color);
+}
+
+.experience__item:hover .experience__bubble {
+  transform: scale(1.05);
 }
 
 .experience__bubble {
-  width: 90px;
-  height: 90px;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-hover) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 2rem;
-  margin: -4.5rem auto 1.5rem;
+  font-size: 1.75rem;
   box-shadow: 0 4px 15px var(--shadow-color);
 }
 
-.experience__item:hover .experience__bubble {
-  transform: scale(1.05) translateY(-3px);
+.experience__logo {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
 }
 
 .experience__company {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .experience__title {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-color-secondary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .experience__duration {
@@ -959,30 +966,10 @@ footer {
   color: var(--text-color-light);
 }
 
-/* remove left bar */
-.experience__item::before {
-  content: none;
-}
-
-/* grid spacing adjust for new card padding */
-@media (max-width: 768px) {
+/* Responsive tweaks */
+@media (max-width: 500px) {
   .experience__item {
-    padding: 3rem 1.5rem 1.5rem;
-  }
-  .experience__bubble {
-    width: 80px;
-    height: 80px;
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .experience__item {
-    padding: 2.75rem 1rem 1.25rem;
-  }
-  .experience__bubble {
-    width: 70px;
-    height: 70px;
-    font-size: 1.5rem;
+    width: 100%;
+    padding: 70px 15px 25px;
   }
 }
