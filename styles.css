@@ -891,3 +891,139 @@ footer {
     display: none;
   }
 }
+
+/* EXPERIENCE SECTION */
+#experience {
+  background-color: var(--bg-color);
+}
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience__item {
+  background-color: var(--bg-color);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.experience__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+}
+
+.experience__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.experience__company {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.experience__location {
+  font-size: 1rem;
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+.experience__title {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.experience__duration {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  margin-bottom: 1rem;
+}
+
+.experience__achievements {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience__achievements li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+}
+
+.experience__achievements li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Mobile Responsiveness for Experience Section */
+@media (max-width: 768px) {
+  .experience__item {
+    padding: 1.5rem;
+  }
+
+  .experience__header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .experience__company {
+    font-size: 1.3rem;
+  }
+
+  .experience__location {
+    font-size: 0.9rem;
+  }
+
+  .experience__achievements li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience__item {
+    padding: 1.25rem;
+  }
+
+  .experience__company {
+    font-size: 1.2rem;
+  }
+
+  .experience__title {
+    font-size: 1rem;
+  }
+
+  .experience__achievements li {
+    font-size: 0.9rem;
+  }
+}
