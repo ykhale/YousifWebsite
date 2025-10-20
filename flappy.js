@@ -1,12 +1,12 @@
 const canvas = document.getElementById('flappyCanvas');
 const ctx = canvas.getContext('2d');
 
-// Game constants - Made even easier
-const GRAVITY = 0.2; // Reduced from 0.3
-const JUMP_FORCE = -6; // Reduced from -8
-const PIPE_SPEED = 1.2; // Reduced from 1.5
-const PIPE_SPAWN_RATE = 2500; // Increased from 2000
-const PIPE_GAP = 250; // Increased from 200
+// Game constants - Made easier and more playable!
+const GRAVITY = 0.3; // Reduced from 0.6
+const JUMP_FORCE = -6.5; // Reduced from -8
+const PIPE_SPEED = 2.0; // Reduced from 4.0
+const PIPE_SPAWN_RATE = 2000; // Increased from 1200 (less frequent pipes)
+const PIPE_GAP = 200; // Increased from 150 (bigger gaps)
 
 // Sound effects
 const jumpSound = new Audio();
@@ -62,7 +62,7 @@ function jump() {
 }
 
 function createPipe() {
-    const gapPosition = Math.random() * (canvas.height - PIPE_GAP - 200) + 100; // More centered gaps
+    const gapPosition = Math.random() * (canvas.height - PIPE_GAP - 200) + 100; // More centered and predictable gaps
     pipes.push({
         x: canvas.width,
         topHeight: gapPosition,

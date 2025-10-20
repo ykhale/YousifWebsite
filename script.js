@@ -9,18 +9,12 @@ function setupThemeToggle() {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-mode');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
 
   // Toggle theme on click
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const isDarkMode = document.body.classList.contains('dark-mode');
-    
-    // Update icon
-    themeToggle.innerHTML = isDarkMode 
-      ? '<i class="fas fa-sun"></i>' 
-      : '<i class="fas fa-moon"></i>';
     
     // Save preference
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');

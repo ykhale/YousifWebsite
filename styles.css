@@ -50,6 +50,8 @@ body {
   transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
+
+
 img {
   width: 100%;
   height: auto;
@@ -252,15 +254,46 @@ section:nth-child(even) {
 .theme-toggle {
   background: none;
   border: none;
-  font-size: 20px;
   cursor: pointer;
-  color: var(--text-color);
-  transition: color var(--transition-speed);
   margin-left: 12px;
+  padding: 0;
 }
 
-.theme-toggle:hover {
-  color: var(--primary-color);
+.toggle-switch {
+  width: 50px;
+  height: 24px;
+  background-color: var(--border-color);
+  border-radius: 12px;
+  position: relative;
+  transition: background-color var(--transition-speed);
+  border: 2px solid var(--border-color);
+}
+
+.toggle-slider {
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all var(--transition-speed);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.theme-toggle:hover .toggle-switch {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.dark-mode .toggle-switch {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.dark-mode .toggle-slider {
+  transform: translateX(26px);
+  background-color: var(--bg-color);
 }
 
 /* ABOUT ME */
@@ -297,7 +330,26 @@ section:nth-child(even) {
   overflow: hidden;
   margin-bottom: 24px;
   animation: float 6s ease-in-out infinite;
-  box-shadow: 0 5px 15px var(--shadow-color);
+  box-shadow: 0 0 30px rgba(79, 143, 243, 0.3), 0 0 60px rgba(79, 143, 243, 0.2);
+  position: relative;
+}
+
+.about-me__picture--mask::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  border-radius: 50%;
+  z-index: -1;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes float {
@@ -322,6 +374,18 @@ section:nth-child(even) {
   font-size: 32px;
   font-weight: 700;
   color: var(--text-color);
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about-me__info--para {
@@ -849,20 +913,46 @@ footer {
     font-size: 22px;
   }
   
+  .nav__container {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
   .nav__link {
-    margin: 0 8px;
+    margin: 0 6px;
   }
   
   .nav__link--anchor {
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .nav__link--anchor-primary {
-    padding: 6px 16px;
+    padding: 6px 12px;
+    font-size: 12px;
   }
   
   .personal__logo {
-    font-size: 20px;
+    font-size: 18px;
+    margin: 0 8px;
+  }
+  
+  .theme-toggle {
+    margin-left: 8px;
+  }
+  
+  .toggle-switch {
+    width: 44px;
+    height: 22px;
+  }
+  
+  .toggle-slider {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .dark-mode .toggle-slider {
+    transform: translateX(22px);
   }
 }
 
@@ -874,6 +964,52 @@ footer {
   
   .nav__container {
     padding: 0 10px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  
+  .nav__link--list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .nav__link {
+    margin: 0 3px;
+  }
+  
+  .nav__link--anchor {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+  
+  .nav__link--anchor-primary {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .personal__logo {
+    font-size: 16px;
+    margin: 0 5px;
+  }
+  
+  .theme-toggle {
+    margin-left: 5px;
+    display: block !important;
+  }
+  
+  .toggle-switch {
+    width: 40px;
+    height: 20px;
+  }
+  
+  .toggle-slider {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .dark-mode .toggle-slider {
+    transform: translateX(20px);
   }
   
   .about-me__cta {
@@ -886,9 +1022,43 @@ footer {
   .btn-secondary {
     margin-left: 0;
   }
+}
+
+@media (max-width: 360px) {
+  .nav__container {
+    padding: 0 5px;
+  }
+  
+  .nav__link--anchor {
+    font-size: 10px;
+    padding: 3px 4px;
+  }
+  
+  .nav__link--anchor-primary {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+  
+  .personal__logo {
+    font-size: 14px;
+  }
   
   .theme-toggle {
-    display: none;
+    margin-left: 5px;
+  }
+  
+  .toggle-switch {
+    width: 36px;
+    height: 18px;
+  }
+  
+  .toggle-slider {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .dark-mode .toggle-slider {
+    transform: translateX(18px);
   }
 }
 
